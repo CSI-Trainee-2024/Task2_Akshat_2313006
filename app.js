@@ -93,37 +93,3 @@ const startClock =()=>{
 }
 startClock();
 }
-
-
-
-/* const newDisplay=(i)=>{
-    view1.style.display="none";
-    let exeHeading = document.createElement("h2");
-    let sec = 
-    exeHeading.innerText= `Start ${exeArray[i][0]} in 30s`
-    view2.style.display="block"
-    view2.appendChild(exeHeading)
- */
-    // after break ends start a Clock 
-    //Display clock in view2
-    // make a done btn
-
-
-
- //while loop(i < exe.length)
-     // ith exe 'name' starts in break(30s)
-    //Timer
-   //Done (on clicking save data in new array and Move to next element in exearray)
-
-
-/* 
-   const breakTimer=()=>{
-         const time  = 30;
-         while(time !=0){
-         
-
-
-
-          time--
-         }
-   } */

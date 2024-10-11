@@ -5,9 +5,9 @@ const input__time =document.getElementById("input__time")
 const section1 =document.getElementById("display__exe")
 const add = document.getElementById("add");
 const end__work =document.getElementById("end__work")
-const begin__work=document.getElementById("begin__work")
+const begin__workout=document.getElementById("begin__work")
 const exeArray =[]
-
+const timeStorage=[]
 // Adding Exercise 12 -24
 add.addEventListener("click",()=>{
    let exe = input__exercise.value;
@@ -23,15 +23,7 @@ const addToPage =(exe,time)=>{
    section1.appendChild(element);
 } 
 
-
-
-
-
-
-
-
-
-begin__work.addEventListener("click",()=>{
+begin__workout.addEventListener("click",()=>{
     if(exeArray.length==0){
         console.log("First Add Something");
         return;
@@ -46,7 +38,7 @@ const startWork=(count)=>{
 
 const runExercise=(i,count)=>{
   if(i>=count){
-    console.log("WorkOut Done")
+    console.log("WorkOut Done")  // Display Work Out Result here
     return;
   }
   view1.style.display = "none";
@@ -55,6 +47,7 @@ const runExercise=(i,count)=>{
  let breakTime =10
  const exeElement= document.createElement("h3");
  exeElement.innerText=`start ${exeArray[i][0]} in ${breakTime}`
+ view2.innerHTML = ""; 
  view2.appendChild(exeElement)
 
  let breakTimer= setInterval(()=>{
@@ -70,6 +63,7 @@ if(breakTime==0){
   timeElement.innerText="0:0"
   view2.appendChild(timeElement)
   beginExercise();
+  createDoneBtn(i);
 }
 
   exeElement.innerText = `start ${exeArray[i][0]} in ${breakTime}`
@@ -91,5 +85,18 @@ const startClock =()=>{
   }
  setInterval(startTimer,1000)
 }
-startClock();
+startClock()
 }
+
+const createDoneBtn =(i)=>{
+const doneBtn =document.createElement("button")
+doneBtn.setAttribute("id","doneBtn")
+doneBtn.innerText="Done"
+view2.appendChild(doneBtn)
+doneBtn.addEventListener("click",()=>{
+  //Sore timing to new array
+  runExercise(i + 1, exeArray.length); 
+})
+}
+
+

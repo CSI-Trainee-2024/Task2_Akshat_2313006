@@ -43,12 +43,14 @@ const runExercise=(i,count)=>{
     return;
   }
   view1.style.display = "none";
-  view2.style.display = "block";
+  view2.style.display ="flex";
 
  let breakTime =10
  const exeElement= document.createElement("h3");
  exeElement.innerText=`start ${exeArray[i].exe} in ${breakTime}`
  view2.innerHTML = ""; 
+ view2.classList.remove("newView")
+ view2.classList.add("updateView")
  view2.appendChild(exeElement)
 
 
@@ -58,8 +60,7 @@ const runExercise=(i,count)=>{
 if(breakTime==0){
   clearInterval(breakTimer)  // clearing Break if Timer Reaches zeRO
   exeElement.innerText=`start ${exeArray[i].exe}`//Derefering an Object value
-
-  const timeElement = document.querySelector("div")
+  const timeElement = document.createElement("div")
   timeElement.setAttribute("id","countDown")
   timeElement.innerText="0:0"
   view2.appendChild(timeElement)
@@ -103,7 +104,7 @@ doneBtn.addEventListener("click",()=>{
   const endTime = new Date().getTime();
   const totalTime = Math.floor((endTime-startTime)/1000)
   timeStorage.push({
-    exercise: exeArray[i][0],
+    exercise: exeArray[i].exe,
     timeTaken: totalTime
   })
   runExercise(i + 1, exeArray.length); //Loop Back to run next exercise

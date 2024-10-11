@@ -45,7 +45,7 @@ const runExercise=(i,count)=>{
   view1.style.display = "none";
   view2.style.display ="flex";
 
- let breakTime =10
+ let breakTime =2
  const exeElement= document.createElement("h3");
  exeElement.innerText=`start ${exeArray[i].exe} in ${breakTime}`
  view2.innerHTML = ""; 
@@ -53,13 +53,12 @@ const runExercise=(i,count)=>{
  view2.classList.add("updateView")
  view2.appendChild(exeElement)
 
-
  // For Giving Break After Each Exercise AND at begining
  let breakTimer= setInterval(()=>{
    breakTime--
-if(breakTime==0){
+if(breakTime== 0){
   clearInterval(breakTimer)  // clearing Break if Timer Reaches zeRO
-  exeElement.innerText=`start ${exeArray[i].exe}`//Derefering an Object value
+  exeElement.innerText=`START Doing ${exeArray[i].exe}`//Derefering an Object value
   const timeElement = document.createElement("div")
   timeElement.setAttribute("id","countDown")
   timeElement.innerText="0:0"
@@ -67,9 +66,9 @@ if(breakTime==0){
   const startTime = new Date().getTime();  //Capturing Time of Starting an Exercise
   beginExercise();    
   createDoneBtn(i,startTime); //Once Exercise Begins Create A button to move to next Exercise
+  return;   // Important Here otherwise Next Code Block will Execute
 }
-
-  exeElement.innerText = `start ${exeArray[i].exe} in ${breakTime}`
+  exeElement.innerText = `START ${exeArray[i].exe} in ${breakTime}`
   view2.appendChild(exeElement)
  },1000)
 }
@@ -115,6 +114,7 @@ doneBtn.addEventListener("click",()=>{
 const displayResult= (count,exeArray,timeStorage)=>{
   view2.innerHTML=""
   const table =document.createElement("table");
+  table.setAttribute("class",("wholeTable"))
   table.innerHTML=` <thead>
         <tr>
             <th>Exercise</th>
@@ -122,7 +122,7 @@ const displayResult= (count,exeArray,timeStorage)=>{
             <th>Time Taken</th>
         </tr>
     </thead>`
-    view2.appendChild(table)
+    
      for( let a=0;a<count;a++){
       let newRow =document.createElement("tr")
       newRow.innerHTML=`<td>${exeArray[a].exe}</td>
@@ -131,5 +131,14 @@ const displayResult= (count,exeArray,timeStorage)=>{
                        `
       table.appendChild(newRow);
      }
+     const resultHeading =document.createElement("h2");
+     resultHeading.setAttribute("Id","tableHeading")
+     resultHeading.innerText="Workout Completed!"
+     const resultDescription =document.createElement("p");
+     resultDescription.setAttribute("Id","tableDescription")
+     resultDescription.innerText="Well Done! Here Are Your Workout Stats"
+     view2.appendChild(resultHeading);
+     resultHeading.appendChild(resultDescription);
+     view2.appendChild(table);
 }
 

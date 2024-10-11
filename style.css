@@ -4,18 +4,18 @@
     box-sizing: border-box;
 }
 :root{
+
     --BG-COL :#A26FE3;
     --ALPHA-COL:#A4F3DE;
     --BETA-COL:#FBB400;
-    --SHADOW: 2px 2px 0px  black; 
+    --SHADOW-BTN: 2px 2px 0px  black;
+    --SHADOW-PART:  5px 5px 0px  black;
     --BOR-RAD : 5px;
-    --FS: clamp(0.6em,2.2vw,5em);
-    --PD-BTN-TB: clamp(0.7em,2vw,1em);  
-    --PD-BTN-LR: clamp(1em,1vw,2em)
-
-    padding: 0.8em 2em;
+    --FS: clamp(0.6em,2vw,5em);
+    --PD-BTN-TB: clamp(0.2em,0.2vw,1em);  
+    --PD-BTN-LR: clamp(0.3em,0.3vw,2em);
 }
-#view2{
+.newView{
     display: none;
 }
 body{
@@ -24,11 +24,12 @@ body{
     font-size: var(--FS);
 
 }
-#view1{
-    height: 70vh;
+#view1,.updateView{
+    min-height: 80vh;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
+  
 }
 .top__heading,.bottom__btns{
     display: flex;
@@ -42,7 +43,7 @@ body{
 .top__heading{
     border-radius: var(--BOR-RAD);
     margin: 1em;
-    box-shadow: var(--SHADOW);
+    box-shadow: var(--SHADOW-PART);
 }
 .bottom__btns{
     background-color: var(--ALPHA-COL);
@@ -56,6 +57,8 @@ body{
     background-color: var(--ALPHA-COL);
     border-radius: 10px;
     margin: 1em;
+
+    box-shadow: var(--SHADOW-PART);
 }
 #display__exe div{
     flex-direction: row; 
@@ -67,7 +70,67 @@ button,input{
     border: none;
     font-weight: bolder;
     border-radius: var(--BOR-RAD);
-    box-shadow: var(--SHADOW);
+    box-shadow: var(--SHADOW-BTN);
     font-size: inherit;
     padding: var(--PD-BTN-TB) var(--PD-BTN-LR);
+}
+#begin__work{
+    background-color: var(--ALPHA-COL);
+}
+#add{
+    background-color: var(--BETA-COL);
+}
+
+.updateView{
+    align-items: center;
+    margin: 2em 3em;
+    background-color: var(--ALPHA-COL);
+}
+#doneBtn,.updateView h3,#countDown{
+    width: 10em;
+    text-align: center;
+    font-weight: bolder;
+    height: 5em;
+   display: flex;
+   place-content: center;
+   align-items: center;
+   font-size: 1.5em;
+   border-radius: var(--BOR-RAD);
+}
+.updateView h3{
+    display: block;
+    width: 90%;
+}
+#countDown{
+    background-color:var(--BETA-COL);
+    box-shadow: var(--SHADOW-PART);
+}
+#doneBtn{
+    height: 3em;
+    margin-bottom: 2em;
+}
+#tableDescription{
+    font-weight: 400;font-size: large;
+    margin-top: 2rem;
+    word-spacing: 0.1em;
+}
+#tableHeading{
+    font-weight: 800;
+    text-align: center;
+}
+.wholeTable,.wholeTable tr{
+    border: 2px solid black;
+}
+.wholeTable{
+    height: clamp(7rem,30vw,13rem);
+    width:70vw;
+    margin-bottom: 5em;
+}
+.wholeTable td {
+    border: 1px solid black;
+    padding: 10px; 
+    text-align: left; 
+}
+.wholeTable {
+    border-collapse: collapse; 
 }

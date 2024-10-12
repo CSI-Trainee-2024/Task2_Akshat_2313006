@@ -39,7 +39,8 @@ const startWork=(count)=>{
 const runExercise=(i,count)=>{
   if(i>=count){
     console.log("WorkOut Done")  // Display Work Out Result here
-    displayResult(count,exeArray,timeStorage)
+    displayResult(count,exeArray,timeStorage);
+    setDataStorage(count,timeStorage);
     return;
   }
   view1.style.display = "none";
@@ -141,4 +142,12 @@ const displayResult= (count,exeArray,timeStorage)=>{
      resultHeading.appendChild(resultDescription);
      view2.appendChild(table);
 }
-
+const setDataStorage =(count,resArr)=>{
+    let i=0;
+    while(i<count){
+       localStorage.setItem("Exercise", JSON.stringify(resArr))
+       let myData = localStorage.getItem("Exercise");
+       console.log(JSON.parse(myData));
+       i++;
+    }
+}

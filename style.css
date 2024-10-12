@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 :root{
-
     --BG-COL :#A26FE3;
     --ALPHA-COL:#A4F3DE;
     --BETA-COL:#FBB400;
@@ -22,14 +21,12 @@ body{
     background-color: var(--BG-COL);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: var(--FS);
-
 }
 #view1,.updateView{
     min-height: 80vh;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
-  
 }
 .top__heading,.bottom__btns{
     display: flex;
@@ -38,7 +35,6 @@ body{
     align-items: center;
     background-color: var(--BETA-COL);
     height: 10vw;
-    
 }
 .top__heading{
     border-radius: var(--BOR-RAD);
@@ -48,16 +44,14 @@ body{
 .bottom__btns{
     background-color: var(--ALPHA-COL);
     margin: 1rem 1em;
-   border-bottom: 5px solid black;
-   
+   border-bottom: 5px solid black; 
 }
 .bottom__part,#display__exe div{
     display: flex;
     flex-direction: column;
     background-color: var(--ALPHA-COL);
     border-radius: 10px;
-    margin: 1em;
-
+    margin: 1rem;
     box-shadow: var(--SHADOW-PART);
 }
 #display__exe div{
@@ -80,7 +74,6 @@ button,input{
 #add{
     background-color: var(--BETA-COL);
 }
-
 .updateView{
     align-items: center;
     margin: 2em 3em;
@@ -104,6 +97,7 @@ button,input{
 #countDown{
     background-color:var(--BETA-COL);
     box-shadow: var(--SHADOW-PART);
+    margin-bottom: 2em;
 }
 #doneBtn{
     height: 3em;
@@ -133,4 +127,16 @@ button,input{
 }
 .wholeTable {
     border-collapse: collapse; 
+}
+@media (max-width:456px) {
+    .top__heading,.bottom__btns{
+        flex-direction: column;
+        flex-flow: wrap;
+        height: 50vw;
+        padding: clamp(0.3em,2vw,1em);
+        gap: 1em;
+        font-size: large;
+        justify-content: flex-start;
+        margin: 1rem;
+    }
 }

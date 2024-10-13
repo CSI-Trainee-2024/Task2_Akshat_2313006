@@ -12,17 +12,22 @@ const timeStorage=[]
 add.addEventListener("click",()=>{
    let exe = input__exercise.value;
    let time = input__time.value;
+   if(exe == ''|| time==''){
+    const validData = document.querySelector("#view1 h3");
+    validData.innerText = "Enter Valid Data to proceed"
+    return;
+   }
    exeArray.push({exe , time});
    console.log(exeArray);
    addToPage(exe,time);
 })
-
 const addToPage =(exe,time)=>{
     let element =document.createElement("div")
-   element.innerHTML= `<h4>${exe}</h4> <h5>${time}</h5>`
+   element.innerHTML= `<h4>${exe}</h4> <h5>${time}${" m"}</h5><span class="material-symbols-outlined">
+check
+</span>`
    section1.appendChild(element);
 } 
-
 begin__workout.addEventListener("click",()=>{
     if(exeArray.length==0){
         console.log("First Add Something");
@@ -30,7 +35,6 @@ begin__workout.addEventListener("click",()=>{
     } 
     startWork(exeArray.length);
 })
-
 const startWork=(count)=>{
   let i=0;
   runExercise(i,count)
@@ -102,10 +106,12 @@ view2.appendChild(doneBtn)
 doneBtn.addEventListener("click",()=>{
   //Sore timing to new array as an object inside
   const endTime = new Date().getTime();
-  const totalTime = Math.floor((endTime-startTime)/1000)
+  const totalTime = Math.floor((endTime-startTime)/1000);
+  const min = Math.floor(totalTime/60);
+  const sec = totalTime%60;
   timeStorage.push({
     exercise: exeArray[i].exe,
-    timeTaken: totalTime
+    timeTaken: `${min}:${sec} minutes`
   })
   runExercise(i + 1, exeArray.length); //Loop Back to run next exercise
 })
@@ -127,7 +133,7 @@ const displayResult= (count,exeArray,timeStorage)=>{
      for( let a=0;a<count;a++){
       let newRow =document.createElement("tr")
       newRow.innerHTML=`<td>${exeArray[a].exe}</td>
-                        <td>${exeArray[a].time}</td>
+                        <td>${exeArray[a].time} minutes</td>
                         <td>${timeStorage[a].timeTaken}</td>
                        `
       table.appendChild(newRow);
